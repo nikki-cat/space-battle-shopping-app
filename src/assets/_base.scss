@@ -1,0 +1,78 @@
+@use "./colors";
+
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  color-scheme: dark;
+  --fancy-stuff-threshold: 1024px;
+  --color-starwars-yellow: #{colors.$starwarsYellow};
+  --color-starwars-yellow-soft: #{colors.$starwarsYellowSoft};
+}
+
+// @media (prefers-color-scheme: dark) {
+  :root {
+    --section-gap: 160px;
+    --item-min-height: 40px;
+    --border-radius-main: 0.3rem; 
+
+    --color-background: #{colors.$black};
+    --color-background-content-frame: #{colors.$darkShadow};
+    --color-background-soft: #222222;
+    --color-background-mute: #282828;
+    --color-background-input: #4f4f4f;
+
+    --color-border: rgba(84, 84, 84, 0.48);
+    --color-border-hover: rgba(84, 84, 84, 0.65);;
+
+    --color-heading: #{colors.$white};
+    --color-text: #525252;
+    --color-text-secondary: #414141;
+    --color-text-button: #d7d7d7;
+  }
+// }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+
+
+body {
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow: hidden;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}

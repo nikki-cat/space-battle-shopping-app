@@ -1,0 +1,92 @@
+@import './_base.scss';
+html, body {
+  height: 100%;
+}
+
+body {
+  min-width: 320px;
+}
+
+#app {
+  height: 100%;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: var(--color-starwars-yellow);
+  transition: 0.4s;
+}
+
+input {
+ background-color: var(--color-background-input);
+ min-height: var(--item-min-height);
+ border: none;
+ border-radius: var(--border-radius-main);
+}
+
+
+.content-frame, main {
+  padding: 1rem;
+  background-color: var(--color-background-content-frame);
+  border-radius: 1rem;
+}
+
+ul li:not(:last-of-type) {
+  margin-bottom: 1rem;
+
+}
+ul.no-list-style {
+  margin: 0;
+  padding: 1px;
+  list-style: none;
+}
+
+label {
+  color: var(--color-starwars-yellow);
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    max-height: 100%;
+    overflow: hidden;
+    grid-template-rows: [header] min-content [body] 1fr;
+    grid-template-columns: 10vw [content] 1fr 10vw;
+    padding: 0 2rem;
+    transition: all 0.2s ease-in;
+
+    > header {
+      grid-row-start: header 1;
+      grid-column-start: content 1;
+    }
+    > main {
+      overflow: hidden;
+      grid-row-start: body 1;
+      grid-column-start: content 1;
+    }
+  }
+
+@media (max-width: 900px) {
+  div#app {
+    grid-template-rows: [header] min-content [body] 1fr;
+    grid-template-columns: 0 [content] 1fr 0;
+    padding: 0;
+  }
+}
