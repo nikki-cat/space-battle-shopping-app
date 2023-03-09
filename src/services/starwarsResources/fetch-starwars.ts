@@ -6,7 +6,7 @@ import type { SwapiResourceResult, SwapiStarShip } from "./types"
 // }
 const swapiStarshipsEndpoint = "https://swapi.dev/api/starships/"
 
-export const fetchSwapiResource = async (url: string) => {
+export const fetchSwapiResource = async (url: string) : Promise<SwapiResourceResult<any>>=> {
   if(!url.startsWith("https://swapi.dev/api")){
     throw new Error("Not a Swapi endpoint 😤");
   }
@@ -18,7 +18,7 @@ export const fetchAllStarships = async (): Promise<undefined | SwapiResourceResu
   return fetchSwapiResource(swapiStarshipsEndpoint)
 }
 
-export const fetchStarshipsBySearch = async (searchText: string) => {
+export const fetchStarshipsBySearch = async (searchText: string): Promise<SwapiResourceResult<SwapiStarShip> | undefined> => {
   const searchTerms = searchText
   const starshipData = await fetchSwapiResource(`${swapiStarshipsEndpoint}?search=${searchTerms}`)
   return starshipData

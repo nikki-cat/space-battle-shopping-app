@@ -8,17 +8,15 @@ export const useSwapiStarships = () => {
   const page = ref(1);
   const totalStarshipsInBackend = ref(0);
 
-  const firstPageUrl = ref('')
-  const nextPageUrl = ref('');
-  const prevPageUrl = ref('');
+  const firstPageUrl = ref()
+  const nextPageUrl = ref();
+  const prevPageUrl = ref();
   
   const starshipsResults: Ref<SwapiStarShip[] | null> = ref(null);
   const starshipsLinkResults: Ref<SwapiStarShip[] | null> = ref(null);
   const starshipSearchResults: Ref<SwapiStarShip[] | null> = ref(null);
 
-  const starships = computed(()=>{
-    return starshipsLinkResults.value || starshipSearchResults.value || starshipsResults.value;
-  });
+
 
   onBeforeMount( async () => {
     // fetch all starships when the component mounts to get the main list
@@ -85,7 +83,8 @@ export const useSwapiStarships = () => {
     if (nextPageUrl.value) {
       page.value += 1;
       await fetchStarshipsByLink(nextPageUrl.value);
-    } else if(firstPageUrl.value) {
+    } else if(!nextPageUrl.value && firstPageUrl.value) {
+      await fetchStarshipsByLink(firstPageUrl.value);
       nextPageUrl.value = firstPageUrl.value
       page.value = 1;
     }
@@ -100,7 +99,7 @@ export const useSwapiStarships = () => {
   
   const resetDefaults = ()=> {
         // reset cached pageUrl if new type of fetch is commenced
-        firstPageUrl.value = "";
+        firstPageUrl.value = undefined;
 
         // Link results no longer relevant
         starshipsLinkResults.value = null;
@@ -110,7 +109,10 @@ export const useSwapiStarships = () => {
   }
 
   return {
-    starships,
+    starshipsResults,
+    starshipsLinkResults,
+    starshipSearchResults,
+    totalStarshipsInBackend,
     page,
     loading,
     error,

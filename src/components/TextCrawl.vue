@@ -1,5 +1,4 @@
 <template>
-    <!-- <div> -->
     <article class="star-wars">
         <div class="crawl">
             <div class="top-fade-effect"></div>
@@ -21,8 +20,6 @@
             </div>
         </div>
     </article>
-
-    <!-- </div> -->
 </template>
 
 <style lang="scss">
