@@ -57,6 +57,7 @@ export const useSwapiStarships = () => {
     } catch (errorNessage) {
       error.value = true;
       console.error(errorNessage);
+      return null;
     }
 
     loading.value = false;

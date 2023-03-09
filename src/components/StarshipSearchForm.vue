@@ -17,7 +17,7 @@ import ButtonSecondary from './ButtonSecondary.vue';
 const emit = defineEmits(["search-submitted", "search-reset"])
 const handleSubmitSearch = (event: Event) => {
     const form = event.target as HTMLFormElement
-    const input = form.elements["starship-search"] as HTMLInputElement
+    const input = form.elements[0] as HTMLInputElement
     emit("search-submitted", input.value)
 }
 
