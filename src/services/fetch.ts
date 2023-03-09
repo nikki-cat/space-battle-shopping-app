@@ -11,11 +11,9 @@ export const fetchData = async (url: string) => {
 
             return response?.json()
         }).then((json) => {
-            console.log(json)
             return json;
         })
 
-        console.log("fetchData", data)
         return data;
    } catch (error) {
         console.error(error)
